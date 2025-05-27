@@ -1,48 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iOS Launcher</title>
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>MiniPay Clone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
 
-  <!-- iOS Status Bar -->
-  <div class="status-bar">
-    <div class="left">
-      <span class="signal">📶</span>
+<body class="bg-gray-900 text-white font-sans">
+  <div class="max-w-sm mx-auto">
+
+    <!-- Welcome Bar -->
+    <div class="flex items-center justify-between px-4 py-3 bg-[#1c1b1f] rounded-b-xl">
+      <div class="flex items-center space-x-2">
+        <div class="bg-purple-600 rounded-full h-8 w-8 flex items-center justify-center text-white font-bold">J</div>
+        <span class="text-sm">Welcome to MiniPay! 👋</span>
+      </div>
+      <div>
+        <img src="https://img.icons8.com/ios-filled/24/ffffff/qr-code.png" alt="QR code" class="w-5 h-5" />
+      </div>
     </div>
-    <div class="center">
-      <span id="clock">9:41</span>
+
+    <!-- Balance Card -->
+    <div class="bg-green-600 rounded-2xl mt-4 p-4 text-white relative">
+      <div class="text-sm opacity-80">Total</div>
+      <div class="text-4xl font-bold">$0.01</div>
+      <div class="absolute top-4 right-4 flex items-center space-x-1">
+        <span class="text-sm font-semibold">USD</span>
+        <label class="inline-flex items-center cursor-pointer">
+          <input type="checkbox" class="sr-only peer">
+          <div class="w-9 h-5 bg-white rounded-full peer peer-checked:bg-green-800 peer-checked:before:translate-x-full before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:bg-green-600 before:rounded-full before:h-4 before:w-4 before:transition-all"></div>
+          <span class="ml-2 text-sm text-white">KES</span>
+        </label>
+      </div>
+
+      <div class="mt-6 flex justify-between">
+        <button class="flex items-center bg-white text-green-700 font-semibold px-4 py-2 rounded-full">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 5a1 1 0 00-1 1v4H5a1 1 0 000 2h4v4a1 1 0 002 0v-4h4a1 1 0 000-2h-4V6a1 1 0 00-1-1z" />
+          </svg>
+          Add cash
+        </button>
+        <button class="flex items-center bg-white text-green-700 font-semibold px-4 py-2 rounded-full">
+          <svg class="w-4 h-4 mr-2 rotate-45" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 5a1 1 0 011 1v4h4a1 1 0 010 2h-4v4a1 1 0 01-2 0v-4H5a1 1 0 010-2h4V6a1 1 0 011-1z" />
+          </svg>
+          Withdraw
+        </button>
+      </div>
     </div>
-    <div class="right">
-      <span class="wifi">📡</span>
-      <span class="battery">🔋</span>
+
+    <!-- Promo Card -->
+    <div class="bg-blue-100 text-gray-900 mt-4 p-4 rounded-xl relative">
+      <div class="text-lg font-bold">You're almost there!</div>
+      <p class="text-sm mt-1">Get up to $0.25 back on your first add cash transaction. Earn 2% weekly on your savings</p>
+      <button class="bg-blue-800 text-white mt-3 px-4 py-2 rounded-lg font-semibold">Add cash</button>
+      <button class="absolute top-2 right-2 text-xl text-gray-400">&times;</button>
     </div>
+
+    <!-- Recent Activity -->
+    <div class="mt-6">
+      <div class="flex justify-between items-center px-2">
+        <h3 class="text-lg font-bold">Recent activity</h3>
+        <button class="text-sm text-white bg-gray-700 px-3 py-1 rounded-full">View more</button>
+      </div>
+      <ul class="mt-4 divide-y divide-gray-700">
+        <li class="flex items-center justify-between py-3 px-2">
+          <div class="flex items-center space-x-2">
+            <div class="bg-blue-600 rounded-full h-8 w-8 flex items-center justify-center text-white">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            </div>
+            <div>
+              <div class="font-semibold">Cashback</div>
+              <div class="text-xs text-gray-400">6 days ago</div>
+            </div>
+          </div>
+          <div class="text-green-400 font-bold">+$0.01</div>
+        </li>
+        <li class="flex items-center justify-between py-3 px-2">
+          <div class="flex items-center space-x-2">
+            <div class="bg-blue-600 rounded-full h-8 w-8 flex items-center justify-center text-white">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            </div>
+            <div>
+              <div class="font-semibold">BitGifty</div>
+              <div class="text-xs text-gray-400">6 days ago</div>
+            </div>
+          </div>
+          <div class="text-red-400 font-bold">-$0.10</div>
+        </li>
+        <li class="flex items-center justify-between py-3 px-2">
+          <div class="flex items-center space-x-2">
+            <div class="bg-green-600 rounded-full h-8 w-8 flex items-center justify-center text-white text-xs font-bold">%</div>
+            <div>
+              <div class="font-semibold">MiniPay Boost</div>
+              <div class="text-xs text-gray-400">6 days ago</div>
+            </div>
+          </div>
+          <div class="text-green-400 font-bold">+$0.01</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="fixed bottom-0 left-0 right-0 bg-gray-800 py-2 flex justify-around items-center">
+      <div class="flex flex-col items-center text-green-400">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M4 3a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4z" />
+        </svg>
+        <span class="text-xs">Wallet</span>
+      </div>
+      <div class="flex flex-col items-center text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M22 12H2" />
+        </svg>
+        <span class="text-xs">Pay</span>
+      </div>
+      <div class="flex flex-col items-center text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <span class="text-xs">Apps</span>
+      </div>
+    </div>
+
   </div>
-
-  <!-- Launcher Icons -->
-  <div class="launcher">
-    <div class="icon" onclick="launchApp('calculator')">
-      <img src="icons/calculator.png" alt="Calculator" />
-      <span>Calculator</span>
-    </div>
-    <div class="icon" onclick="launchApp('notes')">
-      <img src="icons/notes.png" alt="Notes" />
-      <span>Notes</span>
-    </div>
-    <!-- Add more icons as needed -->
-  </div>
-
-  <script src="app.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
-  </script>
 </body>
+
 </html>
