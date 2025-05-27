@@ -7,28 +7,29 @@
   <title>MiniPay Receipt</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-900 text-white min-h-screen flex flex-col overflow-hidden">
+<body class="bg-gray-900 text-white min-h-screen flex flex-col">
 
   <!-- Back Arrow -->
-  <button onclick="location.href='index.html'" class="absolute top-4 left-4">
+  <button onclick="location.href='index.html'" class="absolute top-4 left-4 z-10">
     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7 7-7M3 12h18" />
     </svg>
   </button>
 
-  <div class="flex-1 px-4 pt-16 space-y-6">
-   <!-- Amount and Date -->
-<div>
-  <p class="text-sm text-gray-400">You've received</p>
-  <div class="flex items-baseline justify-between">
-    <div class="flex items-baseline space-x-2">
-      <span class="text-green-500 text-3xl font-bold">0.0003</span>
-      <span class="text-green-500 text-lg font-semibold">USDT</span>
+  <!-- Scrollable Content Area -->
+  <div class="flex-1 overflow-y-auto px-4 pt-16 space-y-6">
+    <!-- Amount and Date -->
+    <div>
+      <p class="text-sm text-gray-400">You've received</p>
+      <div class="flex items-baseline justify-between">
+        <div class="flex items-baseline space-x-2">
+          <span class="text-green-500 text-3xl font-bold">0.0003</span>
+          <span class="text-green-500 text-lg font-semibold">USDT</span>
+        </div>
+        <span class="text-sm text-gray-400">(≈Ksh0.04)</span>
+      </div>
+      <p class="text-sm text-gray-400 mt-1">21 May 2025, 10:14 am</p>
     </div>
-    <span class="text-sm text-gray-400">(≈Ksh0.04)</span>
-  </div>
-  <p class="text-sm text-gray-400 mt-1">21 May 2025, 10:14 am</p>
-</div>
 
     <hr class="border-gray-700">
 
@@ -51,8 +52,8 @@
     </div>
   </div>
 
-  <!-- Bottom Buttons -->
-  <div class="p-4 space-y-4">
+  <!-- Fixed Bottom Buttons -->
+  <div class="p-4 space-y-4 bg-gray-900">
     <button class="w-full border border-gray-600 text-white py-3 rounded-xl">Blockchain receipt</button>
     <a href="index.html" class="block w-full bg-white text-gray-900 text-center py-3 rounded-xl font-semibold">Done</a>
   </div>
