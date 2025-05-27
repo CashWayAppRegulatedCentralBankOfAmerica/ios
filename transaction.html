@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="theme-color" content="#111827">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#111827" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MiniPay Receipt</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-900 text-white min-h-screen flex flex-col">
+<body class="bg-gray-900 text-white min-h-screen flex flex-col relative">
 
- <!-- Back Arrow -->
-<button onclick="location.href='index.html'" class="absolute top-4 left-4">
-  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7 7-7M3 12h18" />
-  </svg>
-</button> 
+  <!-- Back Arrow -->
+  <button onclick="location.href='index.html'" class="absolute top-4 left-4">
+    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7 7-7M3 12h18" />
+    </svg>
+  </button>
 
-  <div class="flex-1 px-4 space-y-6">
+  <div class="flex-1 px-4 pt-16 space-y-6">
     <!-- Amount and Date -->
     <div>
       <div class="flex justify-between items-baseline">
