@@ -45,12 +45,13 @@
       </div>
     </div>
 
-    <!-- Promotion -->
-    <div class="bg-blue-100 text-blue-900 mt-4 p-4 rounded-xl relative"> 
-    <div class="font-bold text-lg">You're almost there!</div>
-    <p class="text-sm mt-1">Get up to $0.25 back on your first add cash transaction. Earn 2% weekly on your savings</p>
-    <button class="bg-blue-800 text-white px-4 py-2 rounded-full mt-3 text-sm font-medium">Add cash</button>
-  </div>
+   <!-- Promotion -->
+<div id="promo-bar" class="rounded-xl mt-4 p-4 relative max-w-sm"
+     style="height: 140px; transition: background-color 0.5s ease;">
+  <div id="promo-title" class="font-bold text-lg"></div>
+  <p id="promo-text" class="text-sm mt-1"></p>
+  <button id="promo-btn" class="px-4 py-2 rounded-full mt-3 text-sm font-medium"></button>
+</div> 
 
    <!-- Recent Activity Section -->
     <div class="bg-gray-800 mt-4 p-4 rounded-xl relative">
@@ -153,5 +154,128 @@
     </div>
 
   </div>
+    <script>
+  const promotions = [
+    {
+      bgColor: '#dbeafe', // light blue
+      textColor: '#1e40af', // dark blue
+      title: "You're almost there!",
+      text: "Get up to $0.25 back on your first add cash transaction. Earn 2% weekly on your savings",
+      btnText: "Add cash",
+      btnBg: '#1e40af',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#fef3c7', // light yellow
+      textColor: '#92400e', // dark orange
+      title: "Boost Your Savings",
+      text: "Save more with our 3% monthly interest. Start your journey now!",
+      btnText: "Start saving",
+      btnBg: '#92400e',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#dcfce7', // light green
+      textColor: '#166534', // dark green
+      title: "Invest Smart",
+      text: "Get personalized investment tips and grow your wealth safely.",
+      btnText: "Learn more",
+      btnBg: '#166534',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#fee2e2', // light red
+      textColor: '#991b1b', // dark red
+      title: "Limited Time Offer!",
+      text: "Double your rewards on all transactions this weekend only!",
+      btnText: "Claim now",
+      btnBg: '#991b1b',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#e0e7ff', // light indigo
+      textColor: '#3730a3', // indigo
+      title: "Secure Your Account",
+      text: "Enable two-factor authentication and protect your funds.",
+      btnText: "Enable 2FA",
+      btnBg: '#3730a3',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#f0f9ff', // light cyan
+      textColor: '#155e75', // dark cyan
+      title: "Easy Transfers",
+      text: "Send money instantly to friends and family with zero fees.",
+      btnText: "Send now",
+      btnBg: '#155e75',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#fefce8', // light amber
+      textColor: '#854d0e', // amber dark
+      title: "Cashback Rewards",
+      text: "Earn cashback on every purchase with our new debit card.",
+      btnText: "Get card",
+      btnBg: '#854d0e',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#ede9fe', // light purple
+      textColor: '#5b21b6', // purple dark
+      title: "Track Your Expenses",
+      text: "Use our budgeting tools to save more efficiently.",
+      btnText: "Explore tools",
+      btnBg: '#5b21b6',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#f3f4f6', // light gray
+      textColor: '#374151', // gray dark
+      title: "Get Instant Alerts",
+      text: "Stay updated with real-time notifications on your transactions.",
+      btnText: "Turn on alerts",
+      btnBg: '#374151',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#fef2f2', // light pink
+      textColor: '#b91c1c', // red dark
+      title: "Refer a Friend",
+      text: "Invite friends and earn $10 for each successful signup!",
+      btnText: "Refer now",
+      btnBg: '#b91c1c',
+      btnColor: '#fff',
+    }
+  ];
+
+  const promoBar = document.getElementById('promo-bar');
+  const titleEl = document.getElementById('promo-title');
+  const textEl = document.getElementById('promo-text');
+  const btnEl = document.getElementById('promo-btn');
+
+  let currentIndex = 0;
+
+  function showPromotion(index) {
+    const promo = promotions[index];
+    promoBar.style.backgroundColor = promo.bgColor;
+    promoBar.style.color = promo.textColor;
+    titleEl.textContent = promo.title;
+    textEl.textContent = promo.text;
+    btnEl.textContent = promo.btnText;
+    btnEl.style.backgroundColor = promo.btnBg;
+    btnEl.style.color = promo.btnColor;
+  }
+
+  function nextPromotion() {
+    currentIndex = (currentIndex + 1) % promotions.length;
+    showPromotion(currentIndex);
+  }
+
+  // Initialize first promotion
+  showPromotion(currentIndex);
+
+  // Change promotion every 5 seconds
+  setInterval(nextPromotion, 5000);
+</script>
 </body>
 </html>
