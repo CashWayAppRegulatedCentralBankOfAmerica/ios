@@ -10,14 +10,13 @@
 
 <body class="bg-gray-900 text-white font-sans">
   <div class="max-w-sm mx-auto">
-<!-- Welcome Bar -->
-<div class="flex items-center justify-between px-4 pt-4">
-  <!-- Clickable Welcome Bubble -->
-  <a href="profile.html" class="flex items-center space-x-2 bg-[#1e5e4b] rounded-full px-3 py-2 transition duration-200 active:scale-95 -ml-4">
-    <div class="bg-purple-600 rounded-full h-8 w-8 flex items-center justify-center text-white font-bold">J</div>
-    <span class="text-sm text-white">Welcome to MiniPay! 👋</span>
-  </a>
-</div>
+    <!-- Welcome Bar -->
+    <div class="flex items-center justify-between px-4 pt-4">
+      <a href="profile.html" class="flex items-center space-x-2 bg-[#1e5e4b] rounded-full px-3 py-2 transition duration-200 active:scale-95 -ml-4">
+        <div class="bg-purple-600 rounded-full h-8 w-8 flex items-center justify-center text-white font-bold">J</div>
+        <span class="text-sm text-white">Welcome to MiniPay! 👋</span>
+      </a>
+    </div>
 
     <!-- Balance Card -->
     <div class="bg-green-600 rounded-2xl mt-4 p-4 text-white relative">
@@ -25,10 +24,8 @@
       <div class="text-4xl font-bold">$0.01</div>
       <div class="absolute top-4 right-4 flex items-center space-x-1">
         <span class="text-sm font-semibold">USD</span>
-        <label class="inline-flex items-center cursor-pointer">
-        </label>
+        <label class="inline-flex items-center cursor-pointer"></label>
       </div>
-
       <div class="mt-6 flex justify-between">
         <button class="flex items-center bg-white text-green-700 font-semibold px-4 py-2 rounded-full">
           <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -45,33 +42,36 @@
       </div>
     </div>
 
-    <!-- Promotion -->
-    <div class="bg-blue-100 text-blue-900 mt-4 p-4 rounded-xl relative"> 
-    <div class="font-bold text-lg">You're almost there!</div>
-    <p class="text-sm mt-1">Get up to $0.25 back on your first add cash transaction. Earn 2% weekly on your savings</p>
-    <button class="bg-blue-800 text-white px-4 py-2 rounded-full mt-3 text-sm font-medium">Add cash</button>
-  </div>
-
-   <!-- Recent Activity Section -->
-    <div class="bg-gray-800 mt-4 p-4 rounded-xl relative">
-    <div class="flex justify-between items-center mb-3">
-      <h2 class="text-md font-semibold">Recent activity</h2>
-      <button class="text-sm text-gray-400">View more</button>
+    <!-- Promotion (Dynamic) -->
+    <div id="promo-container" class="mt-4 p-4 rounded-xl relative transition-all duration-500">
+      <div class="font-bold text-lg" id="promo-title">You're almost there!</div>
+      <p class="text-sm mt-1" id="promo-text">
+        Get up to $0.25 back on your first add cash transaction. Earn 2% weekly on your savings
+      </p>
+      <button id="promo-btn" class="px-4 py-2 rounded-full mt-3 text-sm font-medium">Add cash</button>
     </div>
-    <a href="transaction.html" class="block w-full">  
-    <div class="space-y-4">
-      <div class="flex justify-between items-center">
-        <div class="flex items-center space-x-3">
-          <div class="bg-blue-700 p-2 rounded-full">
-            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9 7 7 0 01-9.9-9.9zM10 5a.75.75 0 01.75.75v3.5h2a.75.75 0 010 1.5H9.25A.75.75 0 018.5 10V5.75A.75.75 0 0110 5z" clip-rule="evenodd"></path></svg>
-          </div>
-          <div>
-            <div class="text-sm font-semibold">Cashback</div>
-            <div class="text-xs text-gray-400">6 days ago</div>
+
+    <!-- Recent Activity Section -->
+    <div class="bg-gray-800 mt-4 p-4 rounded-xl relative">
+      <div class="flex justify-between items-center mb-3">
+        <h2 class="text-md font-semibold">Recent activity</h2>
+        <button class="text-sm text-gray-400">View more</button>
+      </div>
+      <a href="transaction.html" class="block w-full">  
+        <div class="space-y-4">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+              <div class="bg-blue-700 p-2 rounded-full">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9 7 7 0 01-9.9-9.9zM10 5a.75.75 0 01.75.75v3.5h2a.75.75 0 010 1.5H9.25A.75.75 0 018.5 10V5.75A.75.75 0 0110 5z" clip-rule="evenodd"></path></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold">Cashback</div>
+                <div class="text-xs text-gray-400">6 days ago</div>
+              </div>
+            </div>
+            <div class="text-green-400 font-semibold">+$0.01</div>
           </div>
         </div>
-        <div class="text-green-400 font-semibold">+$0.01</div>
-      </div>
       </a>
 
       <div class="flex justify-between items-center">
@@ -87,52 +87,38 @@
         <div class="text-red-400 font-semibold">-$0.10</div>
       </div>
 
-       <div class="space-y-4">
-      <div class="flex justify-between items-center">
-        <div class="flex items-center space-x-3">
-          <div class="bg-blue-700 p-2 rounded-full">
-            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9 7 7 0 01-9.9-9.9zM10 5a.75.75 0 01.75.75v3.5h2a.75.75 0 010 1.5H9.25A.75.75 0 018.5 10V5.75A.75.75 0 0110 5z" clip-rule="evenodd"></path></svg>
-          </div>
-          <div>
-            <div class="text-sm font-semibold">Cashback</div>
-            <div class="text-xs text-gray-400">6 days ago</div>
-          </div>
-        </div>
-        <div class="text-green-400 font-semibold">+$0.01</div>
-      </div>   
-
       <div class="space-y-4">
-      <div class="flex justify-between items-center">
-        <div class="flex items-center space-x-3">
-          <div class="bg-blue-700 p-2 rounded-full">
-            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9 7 7 0 01-9.9-9.9zM10 5a.75.75 0 01.75.75v3.5h2a.75.75 0 010 1.5H9.25A.75.75 0 018.5 10V5.75A.75.75 0 0110 5z" clip-rule="evenodd"></path></svg>
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-3">
+            <div class="bg-blue-700 p-2 rounded-full">
+              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9 7 7 0 01-9.9-9.9zM10 5a.75.75 0 01.75.75v3.5h2a.75.75 0 010 1.5H9.25A.75.75 0 018.5 10V5.75A.75.75 0 0110 5z" clip-rule="evenodd"></path></svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold">Cashback</div>
+              <div class="text-xs text-gray-400">6 days ago</div>
+            </div>
           </div>
-          <div>
-            <div class="text-sm font-semibold">Cashback</div>
-            <div class="text-xs text-gray-400">6 days ago</div>
-          </div>
-        </div>
-        <div class="text-green-400 font-semibold">+$0.01</div>
-      </div>    
+          <div class="text-green-400 font-semibold">+$0.01</div>
+        </div>    
 
-      <div class="flex justify-between items-center">
-        <div class="flex items-center space-x-3">
-          <div class="bg-green-700 p-2 rounded-full">
-            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M13 7H7v6h6V7z" /><path fill-rule="evenodd" d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v10H5V5z" clip-rule="evenodd" /></svg>
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-3">
+            <div class="bg-green-700 p-2 rounded-full">
+              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M13 7H7v6h6V7z" /><path fill-rule="evenodd" d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v10H5V5z" clip-rule="evenodd" /></svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold">MiniPay Boost</div>
+              <div class="text-xs text-gray-400">6 days ago</div>
+            </div>
           </div>
-          <div>
-            <div class="text-sm font-semibold">MiniPay Boost</div>
-            <div class="text-xs text-gray-400">6 days ago</div>
-          </div>
+          <div class="text-green-400 font-semibold">+$0.01</div>
         </div>
-        <div class="text-green-400 font-semibold">+$0.01</div>
       </div>
-    </div>
-  </div> 
+    </div> 
 
     <!-- Bottom Nav -->
-  <div class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white flex justify-around items-center py-3">
-    <div class="flex flex-col items-center text-green-500">
+    <div class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white flex justify-around items-center py-3">
+      <div class="flex flex-col items-center text-green-500">
         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
           <path d="M4 3a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4z" />
         </svg>
@@ -151,8 +137,39 @@
         <span class="text-xs">Apps</span>
       </div>
     </div>
-
   </div>
-</body>
 
+  <!-- Promotion Script -->
+  <script>
+    const promotions = [
+      { title: "You're almost there!", text: "Get up to $0.25 back on your first add cash transaction. Earn 2% weekly on your savings", bg: "bg-blue-100 text-blue-900", btn: "bg-blue-800 text-white" },
+      { title: "Boost your earnings!", text: "Earn 5% bonus on your first $10 deposit this week.", bg: "bg-green-100 text-green-900", btn: "bg-green-800 text-white" },
+      { title: "Refer friends, earn cash!", text: "Invite a friend and get $1 once they make a transaction.", bg: "bg-yellow-100 text-yellow-900", btn: "bg-yellow-700 text-white" },
+      { title: "Exclusive Offer!", text: "Buy gift cards with 0% fees today only!", bg: "bg-purple-100 text-purple-900", btn: "bg-purple-700 text-white" },
+      { title: "Level up with MiniPay", text: "Earn stars every time you save — redeem for cashback.", bg: "bg-pink-100 text-pink-900", btn: "bg-pink-700 text-white" },
+      { title: "Crypto Cashback", text: "Use USDT and earn up to 3% back instantly.", bg: "bg-indigo-100 text-indigo-900", btn: "bg-indigo-700 text-white" },
+      { title: "Get Verified, Get Rewarded", text: "Complete verification and receive $0.50 instantly.", bg: "bg-red-100 text-red-900", btn: "bg-red-700 text-white" },
+      { title: "MiniPay Gold", text: "Unlock premium features with MiniPay Gold membership.", bg: "bg-orange-100 text-orange-900", btn: "bg-orange-700 text-white" },
+      { title: "Daily Rewards", text: "Check in daily and win random prizes.", bg: "bg-teal-100 text-teal-900", btn: "bg-teal-700 text-white" },
+      { title: "Save & Win!", text: "The more you save, the higher your chance to win weekly draws.", bg: "bg-emerald-100 text-emerald-900", btn: "bg-emerald-700 text-white" }
+    ];
+    let index = 0;
+    const container = document.getElementById('promo-container');
+    const title = document.getElementById('promo-title');
+    const text = document.getElementById('promo-text');
+    const btn = document.getElementById('promo-btn');
+
+    function updatePromotion() {
+      const promo = promotions[index];
+      container.className = `mt-4 p-4 rounded-xl relative transition-all duration-500 ${promo.bg}`;
+      title.textContent = promo.title;
+      text.textContent = promo.text;
+      btn.className = `px-4 py-2 rounded-full mt-3 text-sm font-medium ${promo.btn}`;
+      index = (index + 1) % promotions.length;
+    }
+
+    setInterval(updatePromotion, 2000);
+    updatePromotion(); // initial
+  </script>
+</body>
 </html>
