@@ -46,16 +46,11 @@
     </div>
 
     <!-- Promotion -->
-  <!-- Promotion (Fixed Size) -->
-<div id="promo-container" class="mt-4 p-4 rounded-xl relative transition-all duration-500 h-40 overflow-hidden flex flex-col justify-between">
-  <div>
-    <div class="font-bold text-lg" id="promo-title">You're almost there!</div>
-    <p class="text-sm mt-1" id="promo-text">
-      Get up to $0.25 back on your first add cash transaction. Earn 2% weekly on your savings
-    </p>
+    <div class="bg-blue-100 text-blue-900 mt-4 p-4 rounded-xl relative"> 
+    <div class="font-bold text-lg">You're almost there!</div>
+    <p class="text-sm mt-1">Get up to $0.25 back on your first add cash transaction. Earn 2% weekly on your savings</p>
+    <button class="bg-blue-800 text-white px-4 py-2 rounded-full mt-3 text-sm font-medium">Add cash</button>
   </div>
-  <button id="promo-btn" class="px-4 py-2 rounded-full text-sm font-medium">Add cash</button>
-</div>
 
    <!-- Recent Activity Section -->
     <div class="bg-gray-800 mt-4 p-4 rounded-xl relative">
@@ -158,87 +153,6 @@
     </div>
 
   </div>
-    <script>
-  const promotions = [
-    {
-      title: "You're almost there!",
-      text: "Get up to $0.25 back on your first add cash transaction. Earn 2% weekly on your savings",
-      bg: "bg-blue-100 text-blue-900",
-      btn: "bg-blue-800 text-white"
-    },
-    {
-      title: "Boost your earnings!",
-      text: "Earn 5% bonus on your first $10 deposit this week.",
-      bg: "bg-green-100 text-green-900",
-      btn: "bg-green-800 text-white"
-    },
-    {
-      title: "Refer friends, earn cash!",
-      text: "Invite a friend and get $1 once they make a transaction.",
-      bg: "bg-yellow-100 text-yellow-900",
-      btn: "bg-yellow-700 text-white"
-    },
-    {
-      title: "Exclusive Offer!",
-      text: "Buy gift cards with 0% fees today only!",
-      bg: "bg-purple-100 text-purple-900",
-      btn: "bg-purple-700 text-white"
-    },
-    {
-      title: "Level up with MiniPay",
-      text: "Earn stars every time you save — redeem for cashback.",
-      bg: "bg-pink-100 text-pink-900",
-      btn: "bg-pink-700 text-white"
-    },
-    {
-      title: "Crypto Cashback",
-      text: "Use USDT and earn up to 3% back instantly.",
-      bg: "bg-indigo-100 text-indigo-900",
-      btn: "bg-indigo-700 text-white"
-    },
-    {
-      title: "Get Verified, Get Rewarded",
-      text: "Complete verification and receive $0.50 instantly.",
-      bg: "bg-red-100 text-red-900",
-      btn: "bg-red-700 text-white"
-    },
-    {
-      title: "MiniPay Gold",
-      text: "Unlock premium features with MiniPay Gold membership.",
-      bg: "bg-orange-100 text-orange-900",
-      btn: "bg-orange-700 text-white"
-    },
-    {
-      title: "Daily Rewards",
-      text: "Check in daily and win random prizes.",
-      bg: "bg-teal-100 text-teal-900",
-      btn: "bg-teal-700 text-white"
-    },
-    {
-      title: "Save & Win!",
-      text: "The more you save, the higher your chance to win weekly draws.",
-      bg: "bg-emerald-100 text-emerald-900",
-      btn: "bg-emerald-700 text-white"
-    }
-  ];
-
-  let index = 0;
-  const container = document.getElementById('promo-container');
-  const title = document.getElementById('promo-title');
-  const text = document.getElementById('promo-text');
-  const btn = document.getElementById('promo-btn');
-
-  function updatePromotion() {
-    const promo = promotions[index];
-    container.className = `mt-4 p-4 rounded-xl relative transition-all duration-500 ${promo.bg}`;
-    title.textContent = promo.title;
-    text.textContent = promo.text;
-    btn.className = `px-4 py-2 rounded-full mt-3 text-sm font-medium ${promo.btn}`;
-    index = (index + 1) % promotions.length;
-  }
-
-  setInterval(updatePromotion, 2000);
-  updatePromotion(); // initial
-</script>
 </body>
+
 </html>
