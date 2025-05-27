@@ -6,8 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MiniPay Receipt</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    .safe-height {
+      height: 100vh;
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-white min-h-screen flex flex-col">
+<body class="bg-gray-900 text-white flex flex-col overflow-hidden safe-height">
 
   <!-- Back Arrow -->
   <button onclick="location.href='index.html'" class="absolute top-4 left-4 z-10">
@@ -58,5 +67,13 @@
     <a href="index.html" class="block w-full bg-white text-gray-900 text-center py-3 rounded-xl font-semibold">Done</a>
   </div>
 
+  <script>
+    // Set dynamic height to avoid viewport bugs on mobile
+    function setRealHeight() {
+      document.body.style.height = window.innerHeight + "px";
+    }
+    window.addEventListener("load", setRealHeight);
+    window.addEventListener("resize", setRealHeight);
+  </script>
 </body>
 </html>
