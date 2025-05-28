@@ -10,6 +10,9 @@
       height: 100%;
       overflow: hidden;
     }
+    input[type="number"]::-webkit-inner-spin-button {
+      display: none;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white p-5 flex flex-col h-full">
@@ -23,26 +26,36 @@
       <!-- Title -->
       <h1 class="text-2xl font-semibold mb-6">How much?</h1>
 
-      <!-- Amount Input Styled -->
+      <!-- Editable Amount Input -->
       <div class="flex justify-between items-center border border-green-500 rounded-lg px-4 py-3 mb-6 text-2xl font-bold">
-        <span>1000</span>
-        <span class="text-green-500">KES</span>
+        <input id="amountInput" type="number" value="1000" class="bg-transparent outline-none w-full text-white font-bold text-2xl" />
+        <span class="text-green-500 ml-2">KES</span>
       </div>
 
       <!-- Quick Amounts Grid -->
       <div class="grid grid-cols-2 gap-4">
-        <div class="bg-green-600 text-white rounded-xl flex items-center justify-center h-14 font-semibold">400 KES</div>
-        <div class="bg-green-600 text-white rounded-xl flex items-center justify-center h-14 font-semibold">600 KES</div>
-        <div class="bg-green-600 text-white rounded-xl flex items-center justify-center h-14 font-semibold">1,000 KES</div>
-        <div class="bg-green-600 text-white rounded-xl flex items-center justify-center h-14 font-semibold">2,000 KES</div>
+        <button onclick="setAmount(400)" class="bg-green-600 text-white rounded-xl h-14 font-semibold">400 KES</button>
+        <button onclick="setAmount(600)" class="bg-green-600 text-white rounded-xl h-14 font-semibold">600 KES</button>
+        <button onclick="setAmount(1000)" class="bg-green-600 text-white rounded-xl h-14 font-semibold">1,000 KES</button>
+        <button onclick="setAmount(2000)" class="bg-green-600 text-white rounded-xl h-14 font-semibold">2,000 KES</button>
       </div>
     </div>
 
     <!-- Continue Button -->
-    <a href="depositsuccess.html" class="mt-6 bg-white text-black font-semibold text-center py-4 rounded-xl">
+    <a href="depositsuccess.html" onclick="storeAmount()" class="mt-6 bg-white text-black font-semibold text-center py-4 rounded-xl block">
       Continue
     </a>
-    
   </div>
+
+  <script>
+    function setAmount(amount) {
+      document.getElementById('amountInput').value = amount;
+    }
+
+    function storeAmount() {
+      const amount = parseInt(document.getElementById('amountInput').value);
+      localStorage.setItem('lastDeposit', amount);
+    }
+  </script>
 </body>
 </html>
