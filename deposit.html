@@ -2,14 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Add Cash</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-white min-h-screen p-5">
-  <div class="max-w-md mx-auto">
+<body class="bg-gray-900 text-white p-5 flex flex-col h-full">
+  <div class="max-w-md w-full mx-auto flex flex-col h-full">
+    <!-- Back Arrow -->
+    <a href="index.html" class="mb-4 text-white text-2xl">
+      ←
+    </a>
+
+    <!-- Title -->
     <h1 class="text-2xl font-semibold mb-6">Add cash with</h1>
     
+    <!-- Options Grid -->
     <div class="grid grid-cols-2 gap-4">
       <div class="bg-green-500 text-white rounded-xl flex items-center justify-center h-24 font-bold text-lg">m<span class="text-white ml-1">📱</span>pesa</div>
       <div class="bg-yellow-300 text-gray-800 rounded-xl flex items-center justify-center h-24 font-bold text-lg">Bank</div>
@@ -20,8 +33,10 @@
       </div>
     </div>
 
+    <!-- Divider -->
     <div class="my-6 text-center text-gray-400">Or deposit from</div>
 
+    <!-- Wallet/Exchange -->
     <div class="flex items-center bg-gray-800 px-4 py-3 rounded-lg space-x-3">
       <div class="bg-green-500 text-white rounded-full p-2 text-sm">↔</div>
       <span class="font-medium">Wallet or Exchange</span>
