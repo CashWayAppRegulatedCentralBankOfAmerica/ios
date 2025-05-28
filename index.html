@@ -58,11 +58,6 @@
 
    <!-- Recent Activity Section -->
 <!-- Recent Activity Section -->
-  <div id="recentActivityBar">
-  <h3>Recent Activity</h3>
-  <ul id="recentActivityList"></ul>
-</div>
-
 <div class="bg-gray-800 mt-4 p-4 rounded-xl relative">
   <div class="flex justify-between items-center mb-3">
     <h2 class="text-md font-semibold">Recent activity</h2>
@@ -130,109 +125,316 @@
         </div>
         <div>
           <div class="text-sm font-semibold">Stripe Inc.</div>
-          <div class="text-xs text-gray-400" data-timestamp="2025-05-18T10:20:00Z"></div>
+          <div class="text-xs text-gray-400" data-timestamp="2025-05-17T09:13:00Z"></div>
         </div>
       </div>
-      <div class="text-green-400 font-semibold">+$1,140.50</div>
+      <div class="text-green-400 font-semibold">+$94.77</div>
+    </div>
+
+    <div class="space-y-4">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <div class="bg-blue-700 p-2 rounded-full">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9 7 7 0 01-9.9-9.9zM10 5a.75.75 0 01.75.75v3.5h2a.75.75 0 010 1.5H9.25A.75.75 0 018.5 10V5.75A.75.75 0 0110 5z" clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold">Stripe Inc.</div>
+            <div class="text-xs text-gray-400" data-timestamp="2025-05-14T16:44:00Z"></div>
+          </div>
+        </div>
+        <div class="text-green-400 font-semibold">+$200.00</div>
+      </div>
+
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <div class="bg-green-700 p-2 rounded-full">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M13 7H7v6h6V7z" />
+              <path fill-rule="evenodd" d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v10H5V5z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div>
+            <div class="text-sm font-semibold">Refund</div>
+            <div class="text-xs text-gray-400" data-timestamp="2025-05-13T12:00:08Z"></div>
+          </div>
+        </div>
+        <div class="text-green-400 font-semibold">+$150.00</div>
+      </div>
     </div>
   </div>
 </div>
-  
-<script>
-  function loadTransactions() {
-    const data = localStorage.getItem('minipay_transactions');
-    return data ? JSON.parse(data) : [];
-  }
 
-  function formatDateTime(isoString) {
-    const date = new Date(isoString);
-    return date.toLocaleString(); // You can customize this format
-  }
-
-  function renderRecentActivity() {
-    const transactions = loadTransactions();
-
-    // Sort descending by timestamp
-    transactions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-
-    const listEl = document.getElementById('recentActivityList');
-    listEl.innerHTML = ''; // Clear previous
-
-    if (transactions.length === 0) {
-      listEl.innerHTML = '<li>No recent activity</li>';
-      return;
-    }
-
-    transactions.forEach(tx => {
-      const li = document.createElement('li');
-      li.textContent = `${formatDateTime(tx.timestamp)} — ${tx.name}: $${tx.amount.toFixed(2)}`;
-      listEl.appendChild(li);
-    });
-  }
-
-  // Call render on page load
-  document.addEventListener('DOMContentLoaded', renderRecentActivity);
-
-<script>
-  // Update timestamps to human readable format
-  document.querySelectorAll('[data-timestamp]').forEach(el => {
-    const date = new Date(el.getAttribute('data-timestamp'));
-    if (!isNaN(date)) {
-      el.textContent = date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      });
-    }
-  });
-
-  // Promo bar logic
-  const promoBar = document.getElementById('promo-bar');
-  const promoTitle = document.getElementById('promo-title');
-  const promoText = document.getElementById('promo-text');
-  const promoBtn = document.getElementById('promo-btn');
-
-  // Promo variants
-  const promos = [
+    <!-- Bottom Nav -->
+  <div class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white flex justify-around items-center py-3">
+    <div class="flex flex-col items-center text-green-500">
+       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg>
+        <span class="text-xs">Wallet</span>
+      </div>
+     <div class="flex flex-col items-center text-white">
+  <img src="send (3).svg" alt="Pay icon" class="w-6 h-6" />
+  <span class="text-xs">Pay</span>
+</div>
+ <div class="flex flex-col items-center text-white">
+   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/><circle cx="12" cy="10" r="3"/><circle cx="12" cy="12" r="10"/></svg>     
+        <span class="text-xs">Profile</span>
+      </div>
+    </div>
+    <script>
+  const promotions = [
     {
-      bg: '#059669', // emerald-600
-      title: 'Earn $20 with every referral',
-      text: 'Refer friends and earn rewards for every signup.',
-      btnText: 'Refer now',
-      btnAction: () => window.location.href = 'refer.html'
+      bgColor: '#dbeafe', // light blue
+      textColor: '#1e40af', // dark blue
+      title: "You're almost there!",
+      text: "Get up to $0.25 back on your first add cash transaction. Earn 2% weekly on your savings",
+      btnText: "Add cash",
+      btnBg: '#1e40af',
+      btnColor: '#fff',
     },
     {
-      bg: '#2563eb', // blue-600
-      title: 'Deposit money now',
-      text: 'Add funds instantly to your MiniPay account.',
-      btnText: 'Deposit',
-      btnAction: () => window.location.href = 'deposit.html'
+      bgColor: '#fef3c7', // light yellow
+      textColor: '#92400e', // dark orange
+      title: "Boost Your Savings",
+      text: "Save more with our 3% monthly interest. Start your journey now!",
+      btnText: "Start saving",
+      btnBg: '#92400e',
+      btnColor: '#fff',
     },
     {
-      bg: '#b45309', // amber-700
-      title: 'Withdraw your cash',
-      text: 'Fast and easy withdrawal options available.',
-      btnText: 'Withdraw',
-      btnAction: () => window.location.href = 'withdraw.html'
-    }
+      bgColor: '#dcfce7', // light green
+      textColor: '#166534', // dark green
+      title: "Invest Smart",
+      text: "Get personalized investment tips and grow your wealth safely.",
+      btnText: "Learn more",
+      btnBg: '#166534',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#fee2e2', // light red
+      textColor: '#991b1b', // dark red
+      title: "Limited Time Offer!",
+      text: "Double your rewards on all transactions this weekend only!",
+      btnText: "Claim now",
+      btnBg: '#991b1b',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#e0e7ff', // light indigo
+      textColor: '#3730a3', // indigo
+      title: "Secure Your Account",
+      text: "Enable two-factor authentication and protect your funds.",
+      btnText: "Enable 2FA",
+      btnBg: '#3730a3',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#f0f9ff', // light cyan
+      textColor: '#155e75', // dark cyan
+      title: "Easy Transfers",
+      text: "Send money instantly to friends and family with zero fees.",
+      btnText: "Send now",
+      btnBg: '#155e75',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#fefce8', // light amber
+      textColor: '#854d0e', // amber dark
+      title: "Cashback Rewards",
+      text: "Earn cashback on every purchase with our new debit card.",
+      btnText: "Get card",
+      btnBg: '#854d0e',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#ede9fe', // light purple
+      textColor: '#5b21b6', // purple dark
+      title: "Track Your Expenses",
+      text: "Use our budgeting tools to save more efficiently.",
+      btnText: "Explore tools",
+      btnBg: '#5b21b6',
+      btnColor: '#fff',
+    },
+    {
+      bgColor: '#f3f4f6', // light gray
+      textColor: '#374151', // gray dark
+      title: "Get Instant Alerts",
+      text: "Stay updated with real-time notifications on your transactions.",
+      btnText: "Turn on alerts",
+      btnBg: '#374151',
+      btnColor: '#fff',
+    },
+{
+  bgColor: '#fef2f2',
+  textColor: '#b91c1c',
+  title: "Secure Your Profile",
+  text: "Update your password regularly to keep your account safe.",
+  btnText: "Update Now",
+  btnBg: '#b91c1c',
+  btnColor: '#fff',
+},
+{
+  bgColor: '#dbeafe',
+  textColor: '#2563eb',
+  title: "Track Your Spending",
+  text: "Use our budgeting tools to monitor your expenses efficiently.",
+  btnText: "View Tools",
+  btnBg: '#2563eb',
+  btnColor: '#fff',
+},
+{
+  bgColor: '#fff7ed',
+  textColor: '#b45309',
+  title: "Customer Support",
+  text: "We’re here to help you 24/7 with any questions or concerns.",
+  btnText: "Contact Us",
+  btnBg: '#b45309',
+  btnColor: '#fff',
+},
+{
+  bgColor: '#f0f9ff',
+  textColor: '#0369a1',
+  title: "Mobile App",
+  text: "Manage your account on the go with our secure mobile app.",
+  btnText: "Download",
+  btnBg: '#0369a1',
+  btnColor: '#fff',
+},
+{
+  bgColor: '#fefce8',
+  textColor: '#78350f',
+  title: "Manage Notifications",
+  text: "Customize alerts to stay informed without distractions.",
+  btnText: "Set Preferences",
+  btnBg: '#78350f',
+  btnColor: '#fff',
+},
+{
+  bgColor: '#e9f0ff',
+  textColor: '#1d4ed8',
+  title: "Access Reports",
+  text: "Download your monthly account statements anytime.",
+  btnText: "View Reports",
+  btnBg: '#1d4ed8',
+  btnColor: '#fff',
+},
+{
+  bgColor: '#d1fae5',
+  textColor: '#065f46',
+  title: "Set Up Auto-Pay",
+  text: "Simplify payments with automatic scheduling options.",
+  btnText: "Set Up Now",
+  btnBg: '#065f46',
+  btnColor: '#fff',
+},
+{
+  bgColor: '#fff1f2',
+  textColor: '#be123c',
+  title: "Security Alerts",
+  text: "Receive notifications for account activity to stay informed.",
+  btnText: "Manage Alerts",
+  btnBg: '#be123c',
+  btnColor: '#fff',
+},
+{
+  bgColor: '#fef3c7',
+  textColor: '#92400e',
+  title: "Accessibility Options",
+  text: "Customize your experience for better usability.",
+  btnText: "Explore Settings",
+  btnBg: '#92400e',
+  btnColor: '#fff',
+},
+{
+  bgColor: '#fef2f2',
+  textColor: '#9b1c1c',
+  title: "Privacy Settings",
+  text: "Manage who can see your activity and information.",
+  btnText: "Adjust Settings",
+  btnBg: '#9b1c1c',
+  btnColor: '#fff',
+},
+{
+  bgColor: '#eff6ff',
+  textColor: '#1e3a8a',
+  title: "Feedback",
+  text: "Tell us how we can improve your experience.",
+  btnText: "Give Feedback",
+  btnBg: '#1e3a8a',
+  btnColor: '#fff',
+},
+{
+  bgColor: '#fef9c3',
+  textColor: '#a16207',
+  title: "Weekly Newsletter",
+  text: "Stay updated with the latest news and tips delivered to your inbox.",
+  btnText: "Subscribe",
+  btnBg: '#a16207',
+  btnColor: '#fff',
+},
+{
+  bgColor: '#e0f2fe',
+  textColor: '#0369a1',
+  title: "Account Overview",
+  text: "Quickly review your account activity and balances.",
+  btnText: "View Account",
+  btnBg: '#0369a1',
+  btnColor: '#fff',
+}
   ];
 
-  // Cycle promos every 5 seconds
-  let promoIndex = 0;
-  function showPromo() {
-    const promo = promos[promoIndex];
-    promoBar.style.backgroundColor = promo.bg;
-    promoTitle.textContent = promo.title;
-    promoText.textContent = promo.text;
-    promoBtn.textContent = promo.btnText;
-    promoBtn.onclick = promo.btnAction;
-    promoIndex = (promoIndex + 1) % promos.length;
+  const promoBar = document.getElementById('promo-bar');
+  const titleEl = document.getElementById('promo-title');
+  const textEl = document.getElementById('promo-text');
+  const btnEl = document.getElementById('promo-btn');
+
+  let currentIndex = 0;
+
+  function showPromotion(index) {
+    const promo = promotions[index];
+    promoBar.style.backgroundColor = promo.bgColor;
+    promoBar.style.color = promo.textColor;
+    titleEl.textContent = promo.title;
+    textEl.textContent = promo.text;
+    btnEl.textContent = promo.btnText;
+    btnEl.style.backgroundColor = promo.btnBg;
+    btnEl.style.color = promo.btnColor;
   }
 
-  showPromo();
-  setInterval(showPromo, 5000);
+  function nextPromotion() {
+    currentIndex = (currentIndex + 1) % promotions.length;
+    showPromotion(currentIndex);
+  }
+
+  // Initialize first promotion
+  showPromotion(currentIndex);
+
+  // Change promotion every 5 seconds
+  setInterval(nextPromotion, 5000);
 </script>
+    
+<script>
+  // Function to format date and time (e.g., "May 21, 2025 14:35")
+  function formatDateTime(isoString) {
+    const options = {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    };
+    const date = new Date(isoString);
+    return date.toLocaleString(undefined, options);
+  }
+
+  // Replace each "6 days ago" with formatted date & time
+  document.querySelectorAll('[data-timestamp]').forEach(el => {
+    const isoTimestamp = el.getAttribute('data-timestamp');
+    if (isoTimestamp) {
+      el.textContent = formatDateTime(isoTimestamp);
+    }
+  });
+</script
 </body>
 </html>
