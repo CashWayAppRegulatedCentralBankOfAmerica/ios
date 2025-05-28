@@ -19,15 +19,15 @@
     }
   </style>
 </head>
-<body class="flex items-center justify-center text-white">
+<body class="flex flex-col items-center justify-center text-white min-h-screen px-4">
   <!-- Modal Container -->
-  <div id="modal" class="modal bg-gray-900 p-8 rounded-2xl shadow-xl max-w-sm w-full text-center">
+  <div id="modal" class="modal bg-gray-900 p-8 rounded-2xl shadow-xl max-w-sm w-full text-center mb-6">
     <h1 class="text-2xl font-bold text-green-400 mb-2">Withdrawal Successful</h1>
     <p class="text-white text-sm mb-4">Your funds have been sent successfully.</p>
 
     <div class="bg-gray-800 p-4 rounded-lg mb-4">
       <p class="text-lg font-semibold mb-1">Amount</p>
-      <p id="amount" class="text-3xl font-bold text-green-400">-- USD</p>
+      <p id="amount" class="text-3xl font-bold text-green-400">-- KES</p>
     </div>
 
     <div class="bg-gray-800 p-4 rounded-lg text-sm text-left space-y-1 mb-4">
@@ -40,21 +40,65 @@
     <p class="text-xs text-gray-400">This screen will refresh every 10 seconds</p>
   </div>
 
+  <!-- Done Button -->
+  <button id="doneBtn" class="w-full max-w-sm bg-blue-600 text-white py-3 rounded-lg font-semibold mb-6">
+    Done
+  </button>
+
   <script>
     function updateModalContent() {
       const summary = JSON.parse(localStorage.getItem("withdrawSummary")) || {};
+      const exchangeRate = 131;
 
-      document.getElementById("amount").innerText = `${summary.amount || '--'} USD`;
+      // summary.amount is in USD, convert to KES
+      const amountUSD = parseFloat(summary.amount) || 0;
+      const amountKES = (amountUSD * exchangeRate).toFixed(2);
+
+      document.getElementById("amount").innerText = `${amountKES} KES`;
       document.getElementById("operator").innerText = summary.operator || 'M-PESA';
       document.getElementById("phone").innerText = summary.phone || '+254790408472';
       document.getElementById("date").innerText = summary.date || '--';
       document.getElementById("time").innerText = summary.time || '--';
+
+      // Store KES amount for later use on Done click
+      return {
+        amountKES,
+        operator: summary.operator || 'M-PESA',
+        phone: summary.phone || '+254790408472',
+        date: summary.date || '--',
+        time: summary.time || '--'
+      };
     }
 
-    updateModalContent();
+    const currentSummary = updateModalContent();
 
     // Refresh modal content every 10 seconds without blinking
-    setInterval(updateModalContent, 10000);
+    setInterval(() => {
+      const updatedSummary = updateModalContent();
+      // Update currentSummary reference in case of changes
+      Object.assign(currentSummary, updatedSummary);
+    }, 10000);
+
+    document.getElementById('doneBtn').addEventListener('click', () => {
+      // Get existing recent activities or create new array
+      const recentActivities = JSON.parse(localStorage.getItem("recentActivities")) || [];
+
+      // Add current withdrawal to recent activities
+      recentActivities.push({
+        operator: currentSummary.operator,
+        phone: currentSummary.phone,
+        amountKES: currentSummary.amountKES,
+        date: currentSummary.date,
+        time: currentSummary.time,
+        type: "Withdrawal" // optional to identify type of activity
+      });
+
+      // Save back to localStorage
+      localStorage.setItem("recentActivities", JSON.stringify(recentActivities));
+
+      // Redirect to index.html
+      window.location.href = "index.html";
+    });
   </script>
 </body>
 </html>
