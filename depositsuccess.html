@@ -50,29 +50,29 @@
   <button id="doneBtn" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold">Done</button>
 
   <script>
-    // Get the amount from localStorage (KES), convert to USD, then calculate KES estimate
-    const kesInput = parseFloat(localStorage.getItem('lastDeposit') || 0);
-    const usd = (kesInput / 131).toFixed(2);
-    const exchangeRate = 131;
-    const estimatedKES = (usd * exchangeRate).toFixed(2);
+// Get the amount from localStorage (USD), convert to KES
+const usd = parseFloat(localStorage.getItem('lastDeposit') || 0);
+const exchangeRate = 131;
+const estimatedKES = (usd * exchangeRate).toFixed(2);
 
-    document.getElementById('withdrawAmount').value = usd;
-    document.getElementById('kesValue').value = estimatedKES;
-    document.getElementById('summaryText').innerText = `You get ~${estimatedKES} KES for ${usd} USD`;
+document.getElementById('withdrawAmount').value = usd.toFixed(2);
+document.getElementById('kesValue').value = estimatedKES;
+document.getElementById('summaryText').innerText = `You get ~${estimatedKES} KES for ${usd.toFixed(2)} USD`;
 
-    document.getElementById('doneBtn').addEventListener('click', () => {
-      const now = new Date();
-      const date = now.toLocaleDateString();
-      const time = now.toLocaleTimeString();
-      localStorage.setItem("withdrawSummary", JSON.stringify({
-        amount: usd,
-        operator: "M-PESA",
-        phone: "+254790408472",
-        date,
-        time
-      }));
-      window.location.href = "success.html";
-    });
+document.getElementById('doneBtn').addEventListener('click', () => {
+  const now = new Date();
+  const date = now.toLocaleDateString();
+  const time = now.toLocaleTimeString();
+  localStorage.setItem("withdrawSummary", JSON.stringify({
+    amount: usd.toFixed(2),
+    operator: "M-PESA",
+    phone: "+254790408472",
+    date,
+    time
+  }));
+  window.location.href = "success.html";
+});
+
   </script>
 </body>
 </html>
