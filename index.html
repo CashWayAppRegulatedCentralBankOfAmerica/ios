@@ -58,6 +58,11 @@
 
    <!-- Recent Activity Section -->
 <!-- Recent Activity Section -->
+  <div id="recentActivityBar">
+  <h3>Recent Activity</h3>
+  <ul id="recentActivityList"></ul>
+</div>
+
 <div class="bg-gray-800 mt-4 p-4 rounded-xl relative">
   <div class="flex justify-between items-center mb-3">
     <h2 class="text-md font-semibold">Recent activity</h2>
@@ -132,6 +137,41 @@
     </div>
   </div>
 </div>
+  
+<script>
+  function loadTransactions() {
+    const data = localStorage.getItem('minipay_transactions');
+    return data ? JSON.parse(data) : [];
+  }
+
+  function formatDateTime(isoString) {
+    const date = new Date(isoString);
+    return date.toLocaleString(); // You can customize this format
+  }
+
+  function renderRecentActivity() {
+    const transactions = loadTransactions();
+
+    // Sort descending by timestamp
+    transactions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+    const listEl = document.getElementById('recentActivityList');
+    listEl.innerHTML = ''; // Clear previous
+
+    if (transactions.length === 0) {
+      listEl.innerHTML = '<li>No recent activity</li>';
+      return;
+    }
+
+    transactions.forEach(tx => {
+      const li = document.createElement('li');
+      li.textContent = `${formatDateTime(tx.timestamp)} — ${tx.name}: $${tx.amount.toFixed(2)}`;
+      listEl.appendChild(li);
+    });
+  }
+
+  // Call render on page load
+  document.addEventListener('DOMContentLoaded', renderRecentActivity);
 
 <script>
   // Update timestamps to human readable format
