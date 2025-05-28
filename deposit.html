@@ -2,46 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="10">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>Add Cash</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Withdraw Funds</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html, body {
-      height: 100%;
-      overflow: hidden;
-    }
-  </style>
 </head>
-<body class="bg-gray-900 text-white p-5 flex flex-col h-full">
-  <div class="max-w-md w-full mx-auto flex flex-col h-full">
-    <!-- Back Arrow -->
-    <a href="index.html" class="mb-4 text-white text-2xl">
-      ←
-    </a>
-
-    <!-- Title -->
-    <h1 class="text-2xl font-semibold mb-6">Add cash with</h1>
-    
-    <!-- Options Grid -->
-    <div class="grid grid-cols-2 gap-4">
-      <a href="mpesa.html" class="bg-green-500 text-white rounded-xl flex items-center justify-center h-24 font-bold text-lg">m<span class="text-white ml-1">📱</span>pesa</a>
-      <div class="bg-yellow-300 text-gray-800 rounded-xl flex items-center justify-center h-24 font-bold text-lg">Bank</div>
-      <div class="bg-purple-300 text-gray-800 rounded-xl flex items-center justify-center h-24 font-bold text-lg">Card</div>
-      <div class="bg-white text-black rounded-xl flex items-center justify-center h-24 font-bold text-lg space-x-2">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="GPay" class="w-6 h-6">
-        <span>Pay</span>
-      </div>
-    </div>
-
-    <!-- Divider -->
-    <div class="my-6 text-center text-gray-400">Or deposit from</div>
-
-    <!-- Wallet/Exchange -->
-    <div class="flex items-center bg-gray-800 px-4 py-3 rounded-lg space-x-3">
-      <div class="bg-green-500 text-white rounded-full p-2 text-sm">↔</div>
-      <span class="font-medium">Wallet or Exchange</span>
-    </div>
+<body class="bg-white text-black font-sans p-4">
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-xl font-bold">TransFi</h1>
+    <button class="text-sm text-blue-600">Support</button>
   </div>
+
+  <!-- Navigation -->
+  <div class="flex mb-4">
+    <button class="text-blue-600 font-semibold border-b-2 border-blue-600 px-4 py-2">Withdraw</button>
+    <button class="text-gray-400 px-4 py-2">Deposit</button>
+  </div>
+
+  <!-- I want to withdraw -->
+  <label class="block text-gray-600 mb-1">I want to withdraw</label>
+  <div class="flex items-center border rounded-lg px-4 py-3 mb-4 bg-gray-100">
+    <input id="withdrawAmount" type="text" class="bg-transparent w-full text-lg font-semibold" readonly />
+    <span class="ml-2 font-medium">USD</span>
+  </div>
+
+  <!-- You Get Estimate -->
+  <label class="block text-gray-600 mb-1">You Get (Estimate)</label>
+  <div class="flex items-center border rounded-lg px-4 py-3 mb-2 bg-gray-100">
+    <input id="kesValue" type="text" class="bg-transparent w-full text-lg font-semibold text-green-600" readonly />
+    <span class="ml-2 font-medium">KES</span>
+  </div>
+  <p class="text-xs text-gray-500 mb-4">1 USD = 131 KES</p>
+
+  <!-- Summary -->
+  <div class="border rounded-lg p-4 mb-4 bg-gray-50 text-sm text-gray-700">
+    <span id="summaryText">You get KES for USD</span>
+  </div>
+
+  <!-- Delivery Info -->
+  <div class="border rounded-lg p-4 bg-gray-50 mb-6">
+    <h2 class="text-blue-600 font-medium mb-2">Cash will be sent to:</h2>
+    <p class="text-gray-800 text-sm"><strong>Operator:</strong> M-PESA</p>
+    <p class="text-gray-800 text-sm"><strong>Phone:</strong> +254790408472</p>
+  </div>
+
+  <!-- Done Button -->
+  <button id="doneBtn" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold">Done</button>
+
+  <script>
+    // Simulated amount carried from previous page
+    const amount = localStorage.getItem('withdrawAmount') || 1000; // Fallback for testing
+
+    const exchangeRate = 131;
+    const estimatedKES = amount * exchangeRate;
+
+    document.getElementById('withdrawAmount').value = amount;
+    document.getElementById('kesValue').value = estimatedKES.toFixed(2);
+    document.getElementById('summaryText').innerText = `You get ~${estimatedKES.toFixed(2)} KES for ${amount} USD`;
+
+    document.getElementById('doneBtn').addEventListener('click', () => {
+      const now = new Date();
+      const date = now.toLocaleDateString();
+      const time = now.toLocaleTimeString();
+      localStorage.setItem("withdrawSummary", JSON.stringify({
+        amount,
+        operator: "M-PESA",
+        phone: "+254790408472",
+        date,
+        time
+      }));
+      window.location.href = "success.html";
+    });
+  </script>
 </body>
 </html>
