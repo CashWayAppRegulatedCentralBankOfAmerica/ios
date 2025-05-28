@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Withdrawal Success</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 text-gray-900 flex items-center justify-center min-h-screen p-6">
+  <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-6">
+    <h1 class="text-2xl font-bold text-green-600 mb-4">Withdrawal Successful</h1>
+    <div id="details" class="space-y-2 text-sm"></div>
+    <a href="index.html" class="block mt-6 text-center bg-green-600 text-white py-2 rounded-lg font-semibold">Back to Home</a>
+  </div>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem("withdrawSummary") || "{}");
+
+    document.getElementById("details").innerHTML = `
+      <p><strong>Amount Withdrawn:</strong> ${data.amount} USD</p>
+      <p><strong>Operator:</strong> ${data.operator}</p>
+      <p><strong>Phone:</strong> ${data.phone}</p>
+      <p><strong>Date:</strong> ${data.date}</p>
+      <p><strong>Time:</strong> ${data.time}</p>
+      <p class="text-green-600 font-medium mt-4">✅ Transaction Completed</p>
+    `;
+  </script>
+</body>
+</html>
