@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Deposit Success</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center h-screen">
+  <h1 class="text-2xl font-semibold mb-4">Deposit Successful!</h1>
+  <p class="text-lg mb-6">You deposited <span id="depositAmount" class="text-green-500 font-bold"></span> KES</p>
+  <a href="index.html" class="bg-white text-black font-semibold py-3 px-6 rounded-lg">Go to Dashboard</a>
+
+  <script>
+    const deposit = localStorage.getItem('lastDeposit') || 0;
+    document.getElementById('depositAmount').textContent = deposit;
+    let currentBalance = parseInt(localStorage.getItem('balance') || 0);
+    localStorage.setItem('balance', currentBalance + parseInt(deposit));
+  </script>
+</body>
+</html>
