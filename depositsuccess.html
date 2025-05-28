@@ -50,22 +50,22 @@
   <button id="doneBtn" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold">Done</button>
 
   <script>
-    // Simulated amount carried from previous page
-    const amount = localStorage.getItem('withdrawAmount') || 1000; // Fallback for testing
-
+    // Get the amount from localStorage (KES), convert to USD, then calculate KES estimate
+    const kesInput = parseFloat(localStorage.getItem('lastDeposit') || 0);
+    const usd = (kesInput / 131).toFixed(2);
     const exchangeRate = 131;
-    const estimatedKES = amount * exchangeRate;
+    const estimatedKES = (usd * exchangeRate).toFixed(2);
 
-    document.getElementById('withdrawAmount').value = amount;
-    document.getElementById('kesValue').value = estimatedKES.toFixed(2);
-    document.getElementById('summaryText').innerText = `You get ~${estimatedKES.toFixed(2)} KES for ${amount} USD`;
+    document.getElementById('withdrawAmount').value = usd;
+    document.getElementById('kesValue').value = estimatedKES;
+    document.getElementById('summaryText').innerText = `You get ~${estimatedKES} KES for ${usd} USD`;
 
     document.getElementById('doneBtn').addEventListener('click', () => {
       const now = new Date();
       const date = now.toLocaleDateString();
       const time = now.toLocaleTimeString();
       localStorage.setItem("withdrawSummary", JSON.stringify({
-        amount,
+        amount: usd,
         operator: "M-PESA",
         phone: "+254790408472",
         date,
