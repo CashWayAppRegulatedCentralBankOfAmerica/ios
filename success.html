@@ -1,28 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Withdrawal Success</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Success</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background-color: #111827; /* dark gray */
+    }
+
+    .modal {
+      transition: opacity 0.3s ease-in-out;
+    }
+  </style>
 </head>
-<body class="bg-green-50 text-gray-900 flex items-center justify-center min-h-screen p-6">
-  <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-6">
-    <h1 class="text-2xl font-bold text-green-600 mb-4">Withdrawal Successful</h1>
-    <div id="details" class="space-y-2 text-sm"></div>
-    <a href="index.html" class="block mt-6 text-center bg-green-600 text-white py-2 rounded-lg font-semibold">Back to Home</a>
+<body class="flex items-center justify-center text-white">
+  <!-- Modal Container -->
+  <div id="modal" class="modal bg-gray-900 p-8 rounded-2xl shadow-xl max-w-sm w-full text-center">
+    <h1 class="text-2xl font-bold text-green-400 mb-2">Withdrawal Successful</h1>
+    <p class="text-white text-sm mb-4">Your funds have been sent successfully.</p>
+
+    <div class="bg-gray-800 p-4 rounded-lg mb-4">
+      <p class="text-lg font-semibold mb-1">Amount</p>
+      <p id="amount" class="text-3xl font-bold text-green-400">-- USD</p>
+    </div>
+
+    <div class="bg-gray-800 p-4 rounded-lg text-sm text-left space-y-1 mb-4">
+      <p><strong>Operator:</strong> <span id="operator">M-PESA</span></p>
+      <p><strong>Phone:</strong> <span id="phone">+254790408472</span></p>
+      <p><strong>Date:</strong> <span id="date">--</span></p>
+      <p><strong>Time:</strong> <span id="time">--</span></p>
+    </div>
+
+    <p class="text-xs text-gray-400">This screen will refresh every 10 seconds</p>
   </div>
 
   <script>
-    const data = JSON.parse(localStorage.getItem("withdrawSummary") || "{}");
+    function updateModalContent() {
+      const summary = JSON.parse(localStorage.getItem("withdrawSummary")) || {};
 
-    document.getElementById("details").innerHTML = `
-      <p><strong>Amount Withdrawn:</strong> ${data.amount} USD</p>
-      <p><strong>Operator:</strong> ${data.operator}</p>
-      <p><strong>Phone:</strong> ${data.phone}</p>
-      <p><strong>Date:</strong> ${data.date}</p>
-      <p><strong>Time:</strong> ${data.time}</p>
-      <p class="text-green-600 font-medium mt-4">✅ Transaction Completed</p>
-    `;
+      document.getElementById("amount").innerText = `${summary.amount || '--'} USD`;
+      document.getElementById("operator").innerText = summary.operator || 'M-PESA';
+      document.getElementById("phone").innerText = summary.phone || '+254790408472';
+      document.getElementById("date").innerText = summary.date || '--';
+      document.getElementById("time").innerText = summary.time || '--';
+    }
+
+    updateModalContent();
+
+    // Refresh modal content every 10 seconds without blinking
+    setInterval(updateModalContent, 10000);
   </script>
 </body>
 </html>
