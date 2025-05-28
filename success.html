@@ -100,5 +100,33 @@
       window.location.href = "index.html";
     });
   </script>
+  <script>
+  // Get the deposited amount
+  const amount = localStorage.getItem('transactionAmount') || '0.00';
+
+  // Format date and time
+  const now = new Date();
+  const formattedDate = now.toLocaleDateString();
+  const formattedTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+  // Create the new transaction
+  const newTransaction = {
+    name: "M-Pesa",
+    type: "- Ksh " + parseFloat(amount).toFixed(2),
+    color: "text-red-400",
+    date: formattedDate,
+    time: formattedTime
+  };
+
+  // Load previous transactions or start fresh
+  let transactions = JSON.parse(localStorage.getItem("recentTransactions") || "[]");
+
+  // Add new transaction to the top
+  transactions.unshift(newTransaction);
+
+  // Save back to localStorage
+  localStorage.setItem("recentTransactions", JSON.stringify(transactions));
+</script>
+
 </body>
 </html>
