@@ -1,12 +1,27 @@
 const CACHE_NAME = 'minipay-cache-v1';
 const urlsToCache = [
-  '/',
+    '/',
   '/index.html',
   '/manifest.json',
-  '/style.css', // Add your actual CSS file
-  '/script.js', // Add your actual JS file
-  '/android-chrome-512x512.png',
-  '/apple-touch-icon.png',
+  '/deposit.html',
+  '/depositsuccess.html',
+  '/google.jpg',
+  '/mpesa.html',
+  '/mpesa.png',
+  '/pay.webp',
+  '/pay1.jpg',
+  '/paypal.png',
+  '/profile.html',
+  '/send (3).svg',
+  '/service-worker.js',
+  '/style.css', // CSS file
+  '/success.html',
+  '/transaction.html',
+  '/transaction1.html',
+  '/transaction2.html',
+  '/user.svg',
+  '/visa.jpg',
+  '/7123945_logo_pay_google_.png',
 ];
 
 // Install the service worker and cache required files
