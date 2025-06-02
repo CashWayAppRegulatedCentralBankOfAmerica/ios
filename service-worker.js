@@ -21,7 +21,7 @@ const urlsToCache = [
   '/transaction2.html',
   '/user.svg',
   '/visa.jpg',
-  '/7123945_logo_pay_google_.png',
+  '/7123945_logo_pay_google_gpay_icon.png',
 ];
 
 // Install the service worker and cache required files
